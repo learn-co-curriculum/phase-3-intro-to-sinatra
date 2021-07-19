@@ -94,7 +94,7 @@ rackup config.ru
 ```
 
 Just like with our Rack example, this will run a server locally. Visit
-[http://127.0.0.1:9292/hello](http://127.0.0.1:9292/hello) in the browser to
+[http://localhost:9292/hello](http://localhost:9292/hello) in the browser to
 make a request to our Sinatra server and see the response. It even takes care of
 sending back the 200 status code, and setting the `Content-Type` header to
 `text/html`, like we had to do manually with Rack. Nice!
@@ -187,7 +187,7 @@ end
 ```
 
 Now, restart the server and visit our new endpoint at
-[http://127.0.0.1:9292/dice](http://127.0.0.1:9292/dice). Refresh the page to
+[http://localhost:9292/dice](http://localhost:9292/dice). Refresh the page to
 your heart's content! You'll get some new JSON data each time.
 
 ## Dynamic Routing in Sinatra

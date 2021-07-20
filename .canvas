@@ -1,13 +1,5 @@
 ---
 :lessons:
-- :id: 68780
-  :course_id: 3299
-  :canvas_url: https://learning.flatironschool.com/courses/3299/pages/how-the-web-works
-  :type: page
-- :id: 134033
-  :course_id: 3299
-  :canvas_url: https://learning.flatironschool.com/courses/3299/assignments/134033
-  :type: assignment
 - :id: 134039
   :course_id: 3299
   :canvas_url: https://learning.flatironschool.com/courses/3299/assignments/134039

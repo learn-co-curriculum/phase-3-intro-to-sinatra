@@ -1,4 +1,4 @@
-# Intro to Sinatra
+# Creating a Sinatra Application
 
 ## Learning Goals
 
@@ -26,10 +26,10 @@ request to `GET /posts` to show all the recent blog posts, vs a request to
 `GET /authors` to list all the authors.
 
 Similarly, web applications require the ability to render templates to produce
-consistently structured dynamic content. A GET request to '/posts/1' must render
-the HTML for the first post just as a request to GET '/posts/2' will render
-identically structured HTML but with content for the second post. This is
-possible because of templates.
+consistently structured dynamic content. A request to `GET /posts/1` must render
+the HTML for the first post, just as a request to `GET /posts/2` will render
+identically structured HTML (but with content) for the second post. This is
+possible because of _templates_.
 
 Web frameworks should also provide a way to send data back in a variety of
 different formats. For example, we should be able to produce full HTML pages,
@@ -48,16 +48,17 @@ framework, the more you'll have to build things yourself.
 
 ## What is Sinatra?
 
-[Sinatra][sinatra] is a Domain Specific Language (or DSL) implemented in Ruby
-that's used for writing web applications. Created by
-[Blake Mizerany](https://github.com/bmizerany), Sinatra is Rack-based, which
-means it uses Rack under the hood and can use many tools designed to work with
-Rack. It's used by companies such as Apple, BBC, GitHub, LinkedIn, and more.
+[Sinatra][sinatra] is a small web framework that provides a Domain Specific
+Language (or DSL) implemented in Ruby designed for simple web applications.
+Created by [Blake Mizerany](https://github.com/bmizerany), Sinatra is
+Rack-based, which means it uses Rack under the hood and can use many tools
+designed to work with Rack. It's been used by companies such as Apple, BBC,
+GitHub, LinkedIn, and more.
 
 Essentially, Sinatra is nothing more than some pre-written methods that we can
 include in our applications to turn them into Ruby web applications.
 
-Unlike Ruby on Rails, which is a Full Stack Web Development Framework that
+Unlike Ruby on Rails, which is a full-stack web development framework that
 provides everything needed from front to back, Sinatra is designed to be
 lightweight and flexible. Sinatra is designed to provide you with the bare
 minimum requirements and abstractions for building simple and dynamic Ruby web
@@ -117,9 +118,10 @@ get '/hello' do
 end
 ```
 
-You can quickly see what this code is doing: it's setting up a block of code
+You can quickly see what this code is doing: it's setting up a **block of code**
 that will run whenever a `GET` request comes in to the `/hello` path of our
-application, and will send back a response of a string representing some HTML.
+application. Whatever is **returned** by the block will be send back as the
+response: in this case, it's a string representing some HTML.
 
 We can also easily define more than one route:
 
@@ -138,7 +140,10 @@ end
 ```
 
 > **Note**: You'll need to restart the server after making these changes before
-> trying them out in the browser.
+> trying them out in the browser. You can stop the server with `control + c`. If
+> you encounter an error when running your server about the port being in use,
+> refer to [this StackOverflow post](https://stackoverflow.com/a/32592965) to
+> find and stop a process running on a specific port.
 
 Compared to the conditional logic we needed to write by hand in Rack, we think
 you'll agree that this DSL provides a much nicer developer experience!
@@ -177,6 +182,22 @@ to a valid JSON string:
 
 ```rb
 class App < Sinatra::Base
+
+  get '/dice' do
+    dice_roll = rand(1..6)
+    { roll: dice_roll }.to_json
+  end
+
+end
+```
+
+We can also update the default response header for all responses to indicate
+that our server is returning a JSON-formatted string:
+
+```rb
+class App < Sinatra::Base
+  # Add this line to set the Content-Type header for all responses
+  set :default_content_type, 'application/json'
 
   get '/dice' do
     dice_roll = rand(1..6)
@@ -242,8 +263,9 @@ request to `/add/1/2` will use this route, and so will `/add/2/5`.
 The other benefit of using this syntax is that we get access to additional data
 from the url in a special variable known as the **params hash**.
 
-We'll explore the params hash in more detail in future lessons, but you can think
-of it like a way for us to "call" a route and pass in some additional arguments.
+We'll explore the params hash in more detail in future lessons, but you can
+think of it like a way for us to pass in some additional arguments to a route
+handler.
 
 For example, a `GET /add/1/2` request would result in a params hash that looks
 like this:
@@ -274,7 +296,7 @@ end
 ```
 
 This example won't work yet, since we don't have a `Game` class set up, but
-we'll see how to get this code working soon!
+we'll soon see how to get this code working!
 
 ## Conclusion
 

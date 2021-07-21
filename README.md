@@ -302,10 +302,10 @@ we'll soon see how to get this code working!
 
 In this lesson, we covered a lot of the core functionality of Sinatra. We saw
 how to use Sinatra's routing DSL to easily set up a server to handle requests
-from different URLs. We also saw how to generate both HTML and JSON responses.
-Finally, we used **dynamic routes** to handle requests and access data about
-that request via the **params hash**. You're well on your way to creating your
-own web servers with Sinatra!
+using different HTTP verbs and paths. We also saw how to generate both HTML and
+JSON responses. Finally, we used **dynamic routes** to handle requests and
+access data about that request via the **params hash**. You're well on your way
+to creating your own web servers with Sinatra!
 
 ## Resources
 

@@ -21,15 +21,15 @@ application must conform to these standards.
 
 For example, any robust web application will need to handle **request routing**
 and provide a mechanism for the application to respond to different URLs with
-the appropriate **response**. Even a simple blog application has to handle a
-request to `GET /posts` to show all the recent blog posts, vs a request to
+the appropriate **response**. For example, a blog application may handle a
+request to `GET /posts` to show all the recent blog posts, and a request to
 `GET /authors` to list all the authors.
 
 Similarly, web applications require the ability to render templates to produce
 consistently structured dynamic content. A request to `GET /posts/1` must render
 the HTML for the first post, just as a request to `GET /posts/2` will render
-identically structured HTML (but with content) for the second post. This is
-possible because of _templates_.
+identically structured HTML (but with different content) for the second post.
+This is possible because of _templates_.
 
 Web frameworks should also provide a way to send data back in a variety of
 different formats. For example, we should be able to produce full HTML pages,
@@ -49,9 +49,9 @@ framework, the more you'll have to build things yourself.
 ## What is Sinatra?
 
 [Sinatra][sinatra] is a small web framework that provides a Domain Specific
-Language (or DSL) implemented in Ruby designed for simple web applications.
-Created by [Blake Mizerany](https://github.com/bmizerany), Sinatra is
-Rack-based, which means it uses Rack under the hood and can use many tools
+Language (or DSL) implemented in Ruby. It was created by [Blake Mizerany](https://github.com/bmizerany)
+and provides a lightweight option for developing simple web applications. Sinatra
+is Rack-based, which means it uses Rack under the hood and can use many tools
 designed to work with Rack. It's been used by companies such as Apple, BBC,
 GitHub, LinkedIn, and more.
 
@@ -60,9 +60,8 @@ include in our applications to turn them into Ruby web applications.
 
 Unlike Ruby on Rails, which is a full-stack web development framework that
 provides everything needed from front to back, Sinatra is designed to be
-lightweight and flexible. Sinatra is designed to provide you with the bare
-minimum requirements and abstractions for building simple and dynamic Ruby web
-applications.
+lightweight and flexible. It provides you with the bare minimum requirements
+and abstractions for building simple and dynamic Ruby web applications.
 
 In addition to being a great tool for certain projects, Sinatra is a great way
 to get started in web application development with Ruby and will prepare you for
@@ -98,7 +97,7 @@ Just like with our Rack example, this will run a server locally. Visit
 [http://localhost:9292/hello](http://localhost:9292/hello) in the browser to
 make a request to our Sinatra server and see the response. It even takes care of
 sending back the 200 status code, and setting the `Content-Type` header to
-`text/html`, like we had to do manually with Rack. Nice!
+`text/html`, which we had to do manually with Rack. Nice!
 
 Let's break down what's happening in this simple example, and then add a few
 more features to our Sinatra server.
@@ -120,7 +119,7 @@ end
 
 You can quickly see what this code is doing: it's setting up a **block of code**
 that will run whenever a `GET` request comes in to the `/hello` path of our
-application. Whatever is **returned** by the block will be send back as the
+application. Whatever is **returned** by the block will be sent back as the
 response: in this case, it's a string representing some HTML.
 
 We can also easily define more than one route:
@@ -139,9 +138,9 @@ class App < Sinatra::Base
 end
 ```
 
-> **Note**: You'll need to restart the server after making these changes before
-> trying them out in the browser. You can stop the server with `control + c`. If
-> you encounter an error when running your server about the port being in use,
+> **Note**: After making these changes, you'll need to restart the server before
+> you can try them out in the browser. You can stop the server with `control + c`.
+> If you encounter an error when running your server about the port being in use,
 > refer to [this StackOverflow post](https://stackoverflow.com/a/32592965) to
 > find and stop a process running on a specific port.
 
@@ -238,8 +237,8 @@ This works just fine for 1 and 2, but what if we want to add other numbers, like
 manually, but... nope, that won't work. There are way too many numbers for that
 to be practical!
 
-What we can do instead is write out a route using a special syntax by providing
-**named parameters**, which looks like this:
+What we can do instead is write out a route using a special syntax with **named
+parameters**, which looks like this:
 
 ```rb
 class App < Sinatra::Base
@@ -256,7 +255,7 @@ class App < Sinatra::Base
 end
 ```
 
-By defining our route with this special syntax, any requests that matches this
+By defining our route with this special syntax, any requests that match the
 pattern `/add/:num1/:num2` will result in this route being used. So making a
 request to `/add/1/2` will use this route, and so will `/add/2/5`.
 
@@ -264,7 +263,7 @@ The other benefit of using this syntax is that we get access to additional data
 from the url in a special variable known as the **params hash**.
 
 We'll explore the params hash in more detail in future lessons, but you can
-think of it like a way for us to pass in some additional arguments to a route
+think of it as a way for us to pass in some additional arguments to a route
 handler.
 
 For example, a `GET /add/1/2` request would result in a params hash that looks
@@ -284,9 +283,9 @@ like this:
 While this example of setting up an API just to do math is certainly not the
 most practical, being able to set up dynamic routes and access data via the
 params hash will become incredibly useful once we start working with Active
-Record models — for instance, we could set up a route that returns a specific
-`Game` from the `games` table, formatted as JSON, using very similar code as
-above:
+Record models. For instance, we could set up a route that returns a specific
+`Game` from the `games` table, formatted as JSON, using very similar code to
+what we used above:
 
 ```rb
 get '/games/:id' do
@@ -304,7 +303,7 @@ In this lesson, we covered a lot of the core functionality of Sinatra. We saw
 how to use Sinatra's routing DSL to easily set up a server to handle requests
 using different HTTP verbs and paths. We also saw how to generate both HTML and
 JSON responses. Finally, we used **dynamic routes** to handle requests and
-access data about that request via the **params hash**. You're well on your way
+access data about a request via the **params hash**. You're well on your way
 to creating your own web servers with Sinatra!
 
 ## Resources

@@ -1,27 +1,61 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    mustermann (1.1.1)
+    ast (2.4.3)
+    json (2.13.2)
+    language_server-protocol (3.17.0.5)
+    lint_roller (1.1.0)
+    mustermann (2.0.2)
       ruby2_keywords (~> 0.0.1)
-    rack (2.2.3)
-    rack-protection (2.1.0)
+    parallel (1.27.0)
+    parser (3.3.9.0)
+      ast (~> 2.4.1)
+      racc
+    prism (1.4.0)
+    racc (1.8.1)
+    rack (2.2.17)
+    rack-protection (2.2.4)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
+    rainbow (3.1.1)
+    regexp_parser (2.10.0)
+    rubocop (1.79.1)
+      json (~> 2.3)
+      language_server-protocol (~> 3.17.0.2)
+      lint_roller (~> 1.1.0)
+      parallel (~> 1.10)
+      parser (>= 3.3.0.2)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 2.9.3, < 3.0)
+      rubocop-ast (>= 1.46.0, < 2.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 2.4.0, < 4.0)
+    rubocop-ast (1.46.0)
+      parser (>= 3.3.7.2)
+      prism (~> 1.4)
+    ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
-    sinatra (2.1.0)
-      mustermann (~> 1.0)
+    sinatra (2.2.4)
+      mustermann (~> 2.0)
       rack (~> 2.2)
-      rack-protection (= 2.1.0)
+      rack-protection (= 2.2.4)
       tilt (~> 2.0)
-    tilt (2.0.10)
+    tilt (2.6.1)
+    unicode-display_width (3.1.4)
+      unicode-emoji (~> 4.0, >= 4.0.4)
+    unicode-emoji (4.0.4)
+    webrick (1.9.1)
 
 PLATFORMS
-  universal-darwin-20
+  arm64-darwin-24
+  ruby
 
 DEPENDENCIES
-  rack-test (~> 1.1)
-  sinatra (~> 2.1)
+  rack-test
+  rubocop
+  sinatra
+  webrick
 
 BUNDLED WITH
-   2.2.23
+   2.7.1

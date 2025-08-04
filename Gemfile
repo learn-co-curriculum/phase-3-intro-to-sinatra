@@ -1,6 +1,8 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "sinatra", "~> 2.1"
+gem 'rspec'
+gem 'sinatra'
 
-gem "rack-test", "~> 1.1", group: :test
+gem 'webrick'
 
+gem 'rack-test', group: :test
